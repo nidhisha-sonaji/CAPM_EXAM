@@ -1,0 +1,111 @@
+### Get the service document
+http://localhost:4004/odata/v4/EmployeeService
+
+### Get the service metadata document
+http://localhost:4004/odata/v4/EmployeeService/$metadata
+
+### Get all the employees data
+http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+
+### Get all the Employees whose name starts with ‘S’
+http://localhost:4004/odata/v4/EmployeeService/EmployeeSet?$filter=contains(nameFirst,'S')
+
+### Get the top 2 employees, use orderby salaryAmount
+http://localhost:4004/odata/v4/EmployeeService/EmployeeSet?$top=2&$orderby=salaryAmount desc
+
+### CREATE an employee with salary <50000 & currency code USD.
+POST  http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+Content-Type: application/json
+
+{
+    "nameFirst": "Nidhii",
+    "nameMiddle": null,
+    "nameLast": "Sonaji",
+    "nameInitials": null,
+    "Gender": "F",
+    "Language": "E",
+    "phoneNumber": "+919876543210",
+    "Email": "nidhisha.sonaji@ust.com",
+    "loginName": "NIDHISHA",
+    "Currency_code": "USD",
+    "salaryAmount": 30000,
+    "accountNumber": "111222644",
+    "bankId": "51000786",
+    "bankName": "HDFC"
+}
+
+###	CREATE an employee with salary >50000 & currency code USD.
+
+POST  http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+Content-Type: application/json
+
+{
+    "nameFirst": "Prajwal",
+    "nameMiddle": null,
+    "nameLast": "K",
+    "nameInitials": null,
+    "Gender": "M",
+    "Language": "E",
+    "phoneNumber": "+919876543210",
+    "Email": "test.user@example.com",
+    "loginName": "TESTUSER",
+    "Currency_code": "USD",
+    "salaryAmount": 55000,
+    "accountNumber": "1234567890",
+    "bankId": "12345678",
+    "bankName": "Test Bank"
+}
+
+
+###
+http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/5eafdb75-66ea-43d9-8c9d-1ad86847dd71
+### CREATE an employee with salary <50000 & currency code EUR.
+POST  http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+Content-Type: application/json
+
+{
+    "nameFirst": "Rudr",
+    "nameMiddle": null,
+    "nameLast": "K",
+    "nameInitials": null,
+    "Gender": "M",
+    "Language": "E",
+    "phoneNumber": "+919876543210",
+    "Email": "test.user@example.com",
+    "loginName": "TESTUSER",
+    "Currency_code": "EUR",
+    "salaryAmount": 45000,
+    "accountNumber": "1234967890",
+    "bankId": "12345978",
+    "bankName": "Test Bank 1"
+}
+
+### UPDATE an employee by keeping the nameFirst and loginName intact.
+
+PATCH  http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/8af147df-a9f6-496e-a00d-29f0c8ac0011
+Content-Type: application/json
+
+{
+    "Gender": "F",
+    "phoneNumber": "+91999945678",
+    "Email": "nidhisha@ust.com",
+    "salaryAmount": 27000
+}
+
+### UPDATE an employee by changing the loginName.
+PATCH http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/8af147df-a9f6-496e-a00d-29f0c8ac0011
+Content-Type: application/json
+
+{
+    "loginName": "NIDHI"
+}
+
+
+### DELETE any employee
+
+DELETE http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/8af147df-a9f6-496e-a00d-29f0c8ac0011
+
+### •	DELETE an employee whose nameFirst starts with ‘S’.
+
+DELETE http://localhost:4004/odata/v4/EmployeeServices/EmployeeSet?$filter=startswith(nameFirst,'S')
+
