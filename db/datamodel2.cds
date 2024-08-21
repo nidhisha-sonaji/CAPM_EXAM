@@ -54,8 +54,8 @@ context master1 {
 }
 
 context transaction {
-    entity purchaseorder: common.Amount{
-        key NODE_KEY: common.Guid;
+    entity purchaseorder: common.Amount,cuid{
+        //key NODE_KEY: common.Guid;
         PO_ID: String(40) @title : '{i18n>PO_ID}';
         PARTNER_GUID: Association to master1.businesspartner  @title : '{i18n>PARTNER_KEY}';
         LIFECYCLE_STATUS: String(1);
@@ -63,8 +63,8 @@ context transaction {
         Items: Composition of many poitems on Items.PARENT_KEY = $self;
     }
 
-    entity poitems: common.Amount{
-        key NODE_KEY: common.Guid;
+    entity poitems: common.Amount,cuid{
+        //key NODE_KEY: common.Guid;
         PARENT_KEY: Association to purchaseorder @title : '{i18n>PO_NODE_KEY}';
         PO_ITEM_POS: Integer @title : '{i18n>ITEM_POS}';
         PRODUCT_GUID: Association to master1.product  @title : '{i18n>PRODUCT_ID}';
