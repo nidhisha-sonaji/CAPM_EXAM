@@ -107,5 +107,5 @@ DELETE http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/8af147df-a9f6-
 
 ### •	DELETE an employee whose nameFirst starts with ‘S’.
 
-DELETE http://localhost:4004/odata/v4/EmployeeServices/EmployeeSet?$filter=startswith(nameFirst,'S')
+DELETE http://localhost:4004/odata/v4/EmployeeService/EmployeeSet?$filter=startswith(nameFirst,'S')
 
